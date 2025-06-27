@@ -4,3 +4,21 @@ services:
     ports:
       - "11434:11434"
     build: .
+  db:
+    container_name: db
+    image: postgres
+    environment:
+      - POSTGRES_USER=llm
+      - POSTGRES_PASSWORD=llm
+      - POSTGRES_DB=llm
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=llm@llm.com
+      - PGADMIN_DEFAULT_PASSWORD=llm
